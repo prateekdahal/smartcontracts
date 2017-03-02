@@ -1,9 +1,34 @@
+var contractSum;
+var accounts;
+var account;
+var contract;
+var architect;
+var archEmployer;
+var quantitySurveyor;
+var qsEmployer;
+var cdmCoordinator;
+var principalContractor;
+var otherCDM;
+
+
 (function () {
   'use strict';
 
   angular.module('BlurAdmin.pages.contracts', [])
       .config(routeConfig);
 
+	  
+  function createNew()	{
+	  contractSum = parseInt(document.getElementById("contractSum").value);
+	  architect = document.getElementById("architect").value;
+	  archEmployer = document.getElementById("archEmployer").value;
+	  quantitySurveyor = document.getElementById("quantitySurveyor").value;
+	  qsEmployer = document.getElementById("qsEmployer").value;
+	  cdmCoordinator = document.getElementById("cdmCoordinator").value;
+	  principalContractor = document.getElementById("principalContractor").value;
+	  
+  }
+  
   /** @ngInject */
   function routeConfig($stateProvider) {
     $stateProvider
