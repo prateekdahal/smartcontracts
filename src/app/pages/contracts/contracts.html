@@ -1,0 +1,190 @@
+<div class="widgets">
+
+    <div class="row">
+        <div class="col-md-12">
+            <div ba-panel ba-panel-title="New Contract" ba-panel-class="with-scroll">
+                <ba-wizard>
+                    <ba-wizard-step title="Articles" form="vm.articlesForm">
+                        <form name="vm.articlesForm" novalidate>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4>Now it is hereby agreeed as follows</h4>
+									</br>
+									<p><b>Article 1: Contractor's obligations</b></p>
+									<p>The Contractor shall carry out and complete the Works in accordance with the Contract Documents</p></br>
+									
+									<p><b>Article 2: Contractor Sum</b></p>
+									<p>The Employer shall pay the Contractor at the times and in the manner specified in the Conditions the VAT-exclusive sum of</p>
+									<div class="form-group has-feedback"
+                                         ng-class="{'has-error': vm.articlesForm.username.$invalid && (vm.articlesForm.username.$dirty || vm.articlesForm.$submitted)}">                                       
+                                        <input type="number" class="form-control" id="contractSum" name="sumExVAT" placeholder="" ng-model="vm.Articles.sumExVAT" required>
+                                        <span class="help-block error-block basic-block">Required</span>
+                                    </div>
+									<p>or such other sum as shall become payable under this Contract.</p></br>
+									
+									<p><b>Article 3: Architect/Contract Administrator</b></p>
+									<p>For the purposes of this Contract the Architect/Contract Administrator is</p>
+									<div class="form-group has-feedback"
+                                         ng-class="{'has-error': vm.articlesForm.architect.$invalid && (vm.articlesForm.architect.$dirty || vm.articlesForm.$submitted)}">                                       
+                                        <input type="text" class="form-control" id="archAdmin" name="archAdmin" placeholder="" ng-model="vm.Articles.archAdmin" required>
+                                        <span class="help-block error-block basic-block">Required</span>
+                                    </div>
+                                    <p>of</p>
+                                    <div class="form-group has-feedback"
+                                         ng-class="{'has-error': vm.articlesForm.architect.$invalid && (vm.articlesForm.architect.$dirty || vm.articlesForm.$submitted)}">
+                                        <input type="text" class="form-control" id="archEmployer" name="archEmployer" placeholder="" ng-model="vm.Articles.archEmployer" required>
+                                        <span class="help-block error-block basic-block">Required</span>
+                                    </div>
+                                    <p>or, if he ceases to be the Architect/Contract Administrator, such other person as the Employer shall nominate in accordance with clause 3.5 of the Conditions</p></br>
+
+                                    <p><b>Article 4: Quantity Surveyor</b></p>
+                                    <p>For the purposes of this Contract the Quantity Surveyor is</p>
+                                    <div class="form-group has-feedback"
+                                         ng-class="{'has-error': vm.articlesForm.architect.$invalid && (vm.articlesForm.architect.$dirty || vm.articlesForm.$submitted)}">
+                                        <input type="text" class="form-control" id="quantSurveyor" name="quantSurveyor" placeholder="" ng-model="vm.Articles.quantSurveyor" required>
+                                        <span class="help-block error-block basic-block">Required</span>
+                                    </div>
+                                    <p>of</p>
+                                    <div class="form-group has-feedback"
+                                         ng-class="{'has-error': vm.articlesForm.architect.$invalid && (vm.articlesForm.architect.$dirty || vm.articlesForm.$submitted)}">
+                                        <input type="text" class="form-control" id="qsEmployer" name="qsEmployer" placeholder="" ng-model="vm.Articles.qsEmployer" required>
+                                        <span class="help-block error-block basic-block">Required</span>
+                                    </div>
+                                    <p>or, if he ceases to be the Quantity Surveyor, such other person as the Employer shall nominate in accordance with clause 3.5 of the Conditions</p></br>
+
+                                    <p><b>Article 5: CDM Co-ordinator</b></p>
+                                    <p>The CDM Co-ordinator for the purposes of the CDM Regulations is the:</p>
+                                    <form>
+                                        <input type="radio" ng-model="myVar" value="archAdm"> Architect/Contract Administrator
+                                        <input type="radio" ng-model="myVar" value="otherCDM"> Other
+                                    </form>
+
+                                    <div ng-switch="myVar">
+                                        <div ng-switch-when="archAdm">
+                                            <p></p>
+                                        </div>
+                                        <div ng-switch-when="otherCDM">
+                                            <div class="form-group has-feedback"
+                                                 ng-class="{'has-error': vm.articlesForm.architect.$invalid && (vm.articlesForm.architect.$dirty || vm.articlesForm.$submitted)}">
+                                                <input type="text" class="form-control" id="cdm" name="cdm" placeholder="" ng-model="vm.Articles.cdm" required>
+                                                <span class="help-block error-block basic-block">Required</span>
+                                            </div>
+                                            <p>of</p>
+                                            <div class="form-group has-feedback"
+                                                 ng-class="{'has-error': vm.articlesForm.architect.$invalid && (vm.articlesForm.architect.$dirty || vm.articlesForm.$submitted)}">
+                                                <input type="text" class="form-control" id="cdmEmployer" name="cdmEmployer" placeholder="" ng-model="vm.Articles.cdmEmployer" required>
+                                                <span class="help-block error-block basic-block">Required</span>
+                                            </div>
+                                            <p>or, if he ceases to be the CDM Co-ordinator, such other person as the Employer shall appoint pursuant to regulation 14(3) of those regulations</p></br>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!--right side of the screen-->
+                                <div class="col-md-6">
+                                    <p><b>Article 6: Principal Contractor</b></p>
+                                    <p>The Principal Contractor for the purpose of the CDM Regulations and the SWMP Regulations is the:</p>
+                                    <form>
+                                        <input type="radio" ng-model="myVar1" value="contractor"> Contractor
+                                        <input type="radio" ng-model="myVar1" value="otherPC"> Other
+                                    </form>
+
+                                    <div ng-switch="myVar1">
+                                        <div ng-switch-when="contractor">
+                                            <p></p>
+                                        </div>
+                                        <div ng-switch-when="otherPC">
+                                            <div class="form-group has-feedback"
+                                                 ng-class="{'has-error': vm.articlesForm.architect.$invalid && (vm.articlesForm.architect.$dirty || vm.articlesForm.$submitted)}">
+                                                <input type="text" class="form-control" id="pCont" name="pCont" placeholder="" ng-model="vm.Articles.pCont" required>
+                                                <span class="help-block error-block basic-block">Required</span>
+                                            </div>
+                                            <p>of</p>
+                                            <div class="form-group has-feedback"
+                                                 ng-class="{'has-error': vm.articlesForm.architect.$invalid && (vm.articlesForm.architect.$dirty || vm.articlesForm.$submitted)}">
+                                                <input type="text" class="form-control" id="pcEmployer" name="pcEmployer" placeholder="" ng-model="vm.Articles.pcEmployer" required>
+                                                <span class="help-block error-block basic-block">Required</span>
+                                            </div>
+                                            <p>or, if he ceases to be the Principal Contractor, such other contractor as the Employer shall appoint pursuant to regulation 14(3) of the CDM regulations and/or regulation 4 of the SWMP Regulations</p></br>
+                                        </div>
+                                        </br><p><b>Article 7: Adjudication</b></p>
+                                        <p>If any dispute or difference arises under this Contract, either Party may refer it to adjudication in accordance with clause 9.2.</p>
+                                        </br><p><b>Article 8: Arbitration</b></p>
+                                        <p>Where Article 8 applies, then, subject to Article 7 and the exceptions set out below, any dispute or difference between the Parties of any kind whatsoever arising out of or in connection with this Contract shall be referred to arbitration in accordance with clauses 9.3 to 9.8 and the JCT 2011 edition of the <u>Construction Industry Model Arbitration Rules</u> (CIMAR). The exceptions to this Article 8 are:</p>
+                                        <p>- any disputes or differences arising under or in respect of the Construction Industry Scheme or VAT, to the extent that legislation provides another method of resolving such disputes or differences; and</p>
+                                        <p>- any disputes or differences in connection with the enforcement of any decision of an Adjudicator</p>
+                                        </br><p><b>Article 9: Legal proceedings</b></p>
+                                        <p>Subject to Article 7 and (where it applies) to Article 8, the English courts shall have jurisdiction over any dispute or difference between the Parties which arises out of or in connection with this Contract.</p>
+                                </div>
+                            </div>
+                        </form>
+                    </ba-wizard-step>
+                    <ba-wizard-step title="Product Info" form="vm.productInfoForm">
+                        <form name="vm.productInfoForm" novalidate>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group has-feedback"
+                                         ng-class="{'has-error': vm.productInfoForm.productName.$invalid && (vm.productInfoForm.productName.$dirty || vm.productInfoForm.$submitted)}">
+                                        <label for="productName">Product name</label>
+                                        <input type="text" class="form-control" id="productName" name="productName" placeholder="Product name" ng-model="vm.productInfo.productName" required>
+                                        <span class="help-block error-block basic-block">Required</span>
+                                    </div>
+                                    <div class="form-group" ng-class="{'has-error': vm.productInfoForm.productId.$invalid && (vm.productInfoForm.productId.$dirty || vm.productInfoForm.$submitted)}">
+                                        <label for="productId">Product id</label>
+                                        <input type="text" class="form-control" id="productId" name="productId" placeholder="productId" ng-model="vm.productInfo.productId" required>
+                                        <span class="help-block error-block basic-block">Required</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="productName">Category</label>
+                                        <select class="form-control" title="Category" selectpicker>
+                                            <option selected>Electronics</option>
+                                            <option>Toys</option>
+                                            <option>Accessories</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </ba-wizard-step>
+                    <ba-wizard-step title="Shipment"  form="vm.addressForm">
+                        <form name="vm.addressForm" novalidate>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group has-feedback"
+                                         ng-class="{'has-error': vm.addressForm.address.$invalid && (vm.addressForm.address.$dirty || vm.addressForm.$submitted)}">
+                                        <label for="productName">Shipment address</label>
+                                        <input type="text" class="form-control" id="address" name="address" placeholder="Shipment address" ng-model="vm.shipment.address" required>
+                                        <span class="help-block error-block basic-block">Required</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="productName">Shipment method</label>
+                                        <select class="form-control" title="Category" selectpicker>
+                                            <option selected>Fast & expensive</option>
+                                            <option>Cheap & free</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="checkbox">
+                                <label class="custom-checkbox">
+                                    <input type="checkbox">
+                                    <span>Save shipment info</span>
+                                </label>
+                            </div>
+                        </form>
+                    </ba-wizard-step>
+                    <ba-wizard-step title="Finish">
+                        <form class="form-horizontal" name="vm.finishForm" novalidate>
+                            Congratulations! You have successfully filled the form!
+                        </form>
+                    </ba-wizard-step>
+                </ba-wizard>
+            </div>
+        </div>
+    </div>
+
+</div>
