@@ -8,7 +8,7 @@
                         <form name="vm.articlesForm" novalidate>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <h4>Now it is hereby agreeed as follows</h4>
+                                    <h4>Now it is hereby agreed as follows</h4>
 									</br>
 									<p><b>Article 1: Contractor's obligations</b></p>
 									<p>The Contractor shall carry out and complete the Works in accordance with the Contract Documents</p></br>
@@ -17,7 +17,7 @@
 									<p>The Employer shall pay the Contractor at the times and in the manner specified in the Conditions the VAT-exclusive sum of</p>
 									<div class="form-group has-feedback"
                                          ng-class="{'has-error': vm.articlesForm.username.$invalid && (vm.articlesForm.username.$dirty || vm.articlesForm.$submitted)}">                                       
-                                        <input type="number" class="form-control" id="contractSum" name="sumExVAT" placeholder="" ng-model="vm.Articles.sumExVAT" required>
+                                        <input type="number" class="form-control" id="contractSum" name="sumExVAT" placeholder="" ng-model="vm.Articles.contractSum" required>
                                         <span class="help-block error-block basic-block">Required</span>
                                     </div>
 									<p>or such other sum as shall become payable under this Contract.</p></br>
@@ -26,7 +26,7 @@
 									<p>For the purposes of this Contract the Architect/Contract Administrator is</p>
 									<div class="form-group has-feedback"
                                          ng-class="{'has-error': vm.articlesForm.architect.$invalid && (vm.articlesForm.architect.$dirty || vm.articlesForm.$submitted)}">                                       
-                                        <input type="text" class="form-control" id="archAdmin" name="archAdmin" placeholder="" ng-model="vm.Articles.archAdmin" required>
+                                        <input type="text" class="form-control" id="architect" name="architect" placeholder="" ng-model="vm.Articles.architect" required>
                                         <span class="help-block error-block basic-block">Required</span>
                                     </div>
                                     <p>of</p>
@@ -41,7 +41,7 @@
                                     <p>For the purposes of this Contract the Quantity Surveyor is</p>
                                     <div class="form-group has-feedback"
                                          ng-class="{'has-error': vm.articlesForm.architect.$invalid && (vm.articlesForm.architect.$dirty || vm.articlesForm.$submitted)}">
-                                        <input type="text" class="form-control" id="quantSurveyor" name="quantSurveyor" placeholder="" ng-model="vm.Articles.quantSurveyor" required>
+                                        <input type="text" class="form-control" id="quantitySurveyor" name="quantitySurveyor" placeholder="" ng-model="vm.Articles.quantitySurveyor" required>
                                         <span class="help-block error-block basic-block">Required</span>
                                     </div>
                                     <p>of</p>
@@ -55,8 +55,8 @@
                                     <p><b>Article 5: CDM Co-ordinator</b></p>
                                     <p>The CDM Co-ordinator for the purposes of the CDM Regulations is the:</p>
                                     <form>
-                                        <input type="radio" ng-model="myVar" value="archAdm"> Architect/Contract Administrator
-                                        <input type="radio" ng-model="myVar" value="otherCDM"> Other
+                                        <input type="radio" ng-model="cdmCoordinator" value="architect"> Architect/Contract Administrator
+                                        <input type="radio" ng-model="cdmCoordinator" value="otherCDM"> Other
                                     </form>
 
                                     <div ng-switch="myVar">
@@ -85,8 +85,8 @@
                                     <p><b>Article 6: Principal Contractor</b></p>
                                     <p>The Principal Contractor for the purpose of the CDM Regulations and the SWMP Regulations is the:</p>
                                     <form>
-                                        <input type="radio" ng-model="myVar1" value="contractor"> Contractor
-                                        <input type="radio" ng-model="myVar1" value="otherPC"> Other
+                                        <input type="radio" ng-model="principalContractor" value="contractor"> Contractor
+                                        <input type="radio" ng-model="principalContractor" value="otherPC"> Other
                                     </form>
 
                                     <div ng-switch="myVar1">
@@ -117,43 +117,128 @@
                                         <p>Subject to Article 7 and (where it applies) to Article 8, the English courts shall have jurisdiction over any dispute or difference between the Parties which arises out of or in connection with this Contract.</p>
                                 </div>
                             </div>
+							</div>
                         </form>
                     </ba-wizard-step>
-                    <ba-wizard-step title="Product Info" form="vm.productInfoForm">
-                        <form name="vm.productInfoForm" novalidate>
+                    <ba-wizard-step title="Particulars" form="vm.particulars">
+                        <form name="vm.particulars" novalidate>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <div class="form-group has-feedback"
-                                         ng-class="{'has-error': vm.productInfoForm.productName.$invalid && (vm.productInfoForm.productName.$dirty || vm.productInfoForm.$submitted)}">
-                                        <label for="productName">Product name</label>
-                                        <input type="text" class="form-control" id="productName" name="productName" placeholder="Product name" ng-model="vm.productInfo.productName" required>
+									<h4>Part 1: General</h4>
+									<br>
+                                    <p><b>Fourth Recital and clause 4-7</b>&nbsp &nbsp &nbsp Construction Industry Scheme (CIS)</p>
+									<p>Employer at the Base Data:
+									<select name="fourthRecital" ng-model="data.fourthRecital">
+										<option value="isContractor'">is a 'contractor'</option>
+										<option value="isNotContractor'">is not a 'contractor'</option>
+									</select>
+									for the purpose of the CIS
+									</p><br><br>								
+									
+									<p><b>Sixth Recital</b>&nbsp &nbsp &nbsp Description of Sections (if any) (If not shown or described in the Contract Drawings or Contract Bills, state the reference numbers and dates or other identifiers of documents in which they are shown.)[13]</p>											
+									<div class="form-group has-feedback"
+                                         ng-class="{'has-error': vm.Particulars.sixthRecital.$invalid && (vm.Particulars.sixthRecital.$dirty || vm.Particulars.$submitted)}">                                       
+                                        <input type="text" class="form-control" id="sixthRecital" name="sixthRecital" placeholder="" ng-model="vm.Particulars.sixthRecital" required>
                                         <span class="help-block error-block basic-block">Required</span>
-                                    </div>
-                                    <div class="form-group" ng-class="{'has-error': vm.productInfoForm.productId.$invalid && (vm.productInfoForm.productId.$dirty || vm.productInfoForm.$submitted)}">
-                                        <label for="productId">Product id</label>
-                                        <input type="text" class="form-control" id="productId" name="productId" placeholder="productId" ng-model="vm.productInfo.productId" required>
+                                    </div><br><br>									
+									
+									<p><b>Seventh Recital</b>&nbsp &nbsp &nbsp Framework Agreement(if applicable)</p>											
+									<div class="form-group has-feedback"
+                                         ng-class="{'has-error': vm.Particulars.seventhRecital.$invalid && (vm.Particulars.seventhRecital.$dirty || vm.Particulars.$submitted)}">                                       
+                                        <input type="text" class="form-control" id="seventhRecital" name="seventhRecital" placeholder="" ng-model="vm.Particulars.seventhRecital" required>
                                         <span class="help-block error-block basic-block">Required</span>
-                                    </div>
+                                    </div><br><br>
+
+									<p><b>Eight Recital and Schedule 8</b>&nbsp &nbsp &nbsp Supplement Provisions</p>											
+									<p>Paragraph 1) Collaborative working:
+									<input type="checkbox" ng-model="data.collabWorking">	
+									</p>
+									<p>Paragraph 2) Health and safety:
+									<input type="checkbox" ng-model="data.healthSafety">	
+									</p>
+									<p>Paragraph 3) Cost savings and value improvements:
+									<input type="checkbox" ng-model="data.costSavings">	
+									</p>
+									<p>Paragraph 4) Sustainable development and environmental considerations:
+									<input type="checkbox" ng-model="data.sustainable">										
+									</p>
+									<p>Paragraph 5) Performance Indicators and monitoring:
+									<input type="checkbox" ng-model="data.performanceIndicators">
+									</p>
+									<p>Paragraph 6) Notification and negotiation of disputes:
+									<input type="checkbox" ng-model="data.disputes">										
+									</p>
+									<span ng-if="data.disputes">
+										<p> Employer's nominee </p>
+										<div class="form-group has-feedback"
+                                         ng-class="{'has-error': vm.Particulars.employersNominee.$invalid && (vm.Particulars.employersNominee.$dirty || vm.Particulars.$submitted)}">                                       
+                                        <input type="text" class="form-control" id="employersNominee" name="employersNominee" placeholder="" ng-model="vm.Particulars.employersNominee" required>
+                                        <span class="help-block error-block basic-block">Required</span>
+										<br><p> Contractor's nominee </p>
+										<div class="form-group has-feedback"
+                                         ng-class="{'has-error': vm.Particulars.contractorsNominee.$invalid && (vm.Particulars.contractorsNominee.$dirty || vm.Particulars.$submitted)}">                                       
+                                        <input type="text" class="form-control" id="contractorsNominee" name="contractorsNominee" placeholder="" ng-model="vm.Particulars.contractorsNominee" required>
+                                        <span class="help-block error-block basic-block">Required</span>
+										</div>
+									</span>	
+									<p> or such replacement as each Party may notify to the other from time to time</p>
+									</div>
+                                    
                                 </div>
+								<!-- Right side of the page-->
                                 <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="productName">Category</label>
-                                        <select class="form-control" title="Category" selectpicker>
-                                            <option selected>Electronics</option>
-                                            <option>Toys</option>
-                                            <option>Accessories</option>
-                                        </select>
-                                    </div>
+                                    <p><b>Article 8</b> &nbsp &nbsp &nbsp Arbitration </p>
+									<p>Article 8 and clauses 9.3 to 9.8 (Arbitration)
+									<input type="checkbox" ng-model="data.article8">										
+									</p>
+									<br><p><b>1.1 </b> &nbsp &nbsp &nbsp Date for Completion of the Works </p>
+									<input type="date" ng-model="completionDate" required </><br><br>
+									<label> Section </label> 
+									<input type="number" ng-model="section1" </>
+									<input type="date" ng-model="section1CompletionDate" required </><br>
+									<label> Section </label> 
+									<input type="number" ng-model="section2" </>
+									<input type="date" ng-model="section2CompletionDate" required </><br>
+									<label> Section </label> 
+									<input type="number" ng-model="section3" </>
+									<input type="date" ng-model="section3CompletionDate" required </><br><br>
+									
+									<p><b>2.38 Rectification period </b></p>
+									<input type="text" ng-model="rectificationPeriod"<p>&nbsp months from the date of practical completion of the Works </p></>
+									<p><b>Sections: Rectification period </b></p>
+									<label> Section </label> 
+									<input type="number" ng-model="section1" </>
+									<input type="text" ng-model="section1Rectification" <p> months </p> </><br>
+									<label> Section </label> 
+									<input type="number" ng-model="section2" </>
+									<input type="text" ng-model="section2Rectification" <p> months </p> </><br>
+									<label> Section </label> 
+									<input type="number" ng-model="section3" </>
+									<input type="text" ng-model="section3Rectification" <p> months </p> </>
+									<p> from the date of practical completion of the Works </p>
+									
+									<p><b>4.8</b> &nbsp &nbsp Advance payment</p>
+									<input type="checkbox" ng-model="data.advancePayment">
+									</p>
+									<span ng-if="data.advancePayment">
+										<p>The advance payment will be: £
+										<input type="number" ng-model="advancePaymentAmount" </>
+										<p>OR</p>
+										<input type="number" ng-model="advancePaymentPercent" </>
+										per cent of the Contract Sum <br><br> and will be paid to the Contractor on
+										<input type="date" ng-model="advancePaymentDate" </></p>
+									
+									
                                 </div>
                             </div>
                         </form>
                     </ba-wizard-step>
-                    <ba-wizard-step title="Shipment"  form="vm.addressForm">
-                        <form name="vm.addressForm" novalidate>
+                    <ba-wizard-step title="Particulars: 2"  form="vm.particulars2">
+                        <form name="vm.particulars2" novalidate>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group has-feedback"
-                                         ng-class="{'has-error': vm.addressForm.address.$invalid && (vm.addressForm.address.$dirty || vm.addressForm.$submitted)}">
+                                         ng-class="{'has-error': vm.particulars2.address.$invalid && (vm.particulars2.address.$dirty || vm.particulars2.$submitted)}">
                                         <label for="productName">Shipment address</label>
                                         <input type="text" class="form-control" id="address" name="address" placeholder="Shipment address" ng-model="vm.shipment.address" required>
                                         <span class="help-block error-block basic-block">Required</span>
